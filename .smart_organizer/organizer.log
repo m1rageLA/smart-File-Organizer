@@ -1,0 +1,24 @@
+2025-07-24 17:26:19 [INFO] Source:      "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test"
+2025-07-24 17:26:19 [INFO] Destination: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test"
+2025-07-24 17:26:19 [INFO] Dry‑run:     false
+2025-07-24 17:26:19 [INFO] Overwrite:   false
+2025-07-24 17:26:19 [WARN] Source and destination folders are the same, using nested subfolders.
+2025-07-24 17:26:19 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/js/scripts.js" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/js/scripts_(1).js"
+2025-07-24 17:26:19 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/pdf/sis.redsys.es_sis_pago3DSecure;jsessionid=0000J9m4rP6-GwPVc8LUYLstxlg_1bc077vpd.pdf" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/pdf/sis.redsys.es_sis_pago3DSecure;jsessionid=0000J9m4rP6-GwPVc8LUYLstxlg_1bc077vpd_(1).pdf"
+2025-07-24 17:26:19 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/html/index.html" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/html/index_(1).html"
+2025-07-24 17:26:19 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/no_extension/.DS_Store" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/no_extension/.DS_Store_(1)"
+2025-07-24 17:26:19 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/jpeg/1683214198841.jpeg" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/jpeg/1683214198841_(1).jpeg"
+2025-07-24 17:26:19 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/mov/Screen Recording 2025-07-23 at 12.16.32\u{202f}PM.mov" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/mov/Screen Recording 2025-07-23 at 12.16.32\u{202f}PM_(1).mov"
+2025-07-24 17:26:39 [INFO] Source:      "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test"
+2025-07-24 17:26:39 [INFO] Destination: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test"
+2025-07-24 17:26:39 [INFO] Dry‑run:     false
+2025-07-24 17:26:39 [INFO] Overwrite:   false
+2025-07-24 17:26:39 [WARN] Source and destination folders are the same, using nested subfolders.
+2025-07-24 17:26:39 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/index_(1).html" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/html/index_(1).html"
+2025-07-24 17:26:39 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/.DS_Store_(1)" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/no_extension/.DS_Store_(1)"
+2025-07-24 17:26:39 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/pdf/sis.redsys.es_sis_pago3DSecure;jsessionid=0000J9m4rP6-GwPVc8LUYLstxlg_1bc077vpd_(1).pdf" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/pdf/sis.redsys.es_sis_pago3DSecure;jsessionid=0000J9m4rP6-GwPVc8LUYLstxlg_1bc077vpd_(1)_(1).pdf"
+2025-07-24 17:26:39 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/html/index_(1).html" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/html/index_(1)_(1).html"
+2025-07-24 17:26:39 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/scripts_(1).js" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/js/scripts_(1).js"
+2025-07-24 17:26:39 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/no_extension/.DS_Store_(1)" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/no_extension/.DS_Store_(1)_(1)"
+2025-07-24 17:26:39 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/jpeg/1683214198841_(1).jpeg" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/jpeg/1683214198841_(1)_(1).jpeg"
+2025-07-24 17:26:39 [INFO] Move: "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/mov/Screen Recording 2025-07-23 at 12.16.32\u{202f}PM_(1).mov" -> "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/mov/Screen Recording 2025-07-23 at 12.16.32\u{202f}PM_(1)_(1).mov"

@@ -23554,6 +23554,76 @@
       "from": "/Users/tymurrozhkovskyi/test/1683214198841.jpeg",
       "to": "/Users/tymurrozhkovskyi/test/jpeg/1683214198841.jpeg",
       "time": "2025-07-24T15:18:09.720583Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/js/scripts.js",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/js/scripts_(1).js",
+      "time": "2025-07-24T15:26:19.705315Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/pdf/sis.redsys.es_sis_pago3DSecure;jsessionid=0000J9m4rP6-GwPVc8LUYLstxlg_1bc077vpd.pdf",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/pdf/sis.redsys.es_sis_pago3DSecure;jsessionid=0000J9m4rP6-GwPVc8LUYLstxlg_1bc077vpd_(1).pdf",
+      "time": "2025-07-24T15:26:19.780429Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/html/index.html",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/html/index_(1).html",
+      "time": "2025-07-24T15:26:19.823653Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/no_extension/.DS_Store",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/no_extension/.DS_Store_(1)",
+      "time": "2025-07-24T15:26:19.865277Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/jpeg/1683214198841.jpeg",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/jpeg/1683214198841_(1).jpeg",
+      "time": "2025-07-24T15:26:19.907200Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/mov/Screen Recording 2025-07-23 at 12.16.32 PM.mov",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/mov/Screen Recording 2025-07-23 at 12.16.32 PM_(1).mov",
+      "time": "2025-07-24T15:26:19.949149Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/index_(1).html",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/html/index_(1).html",
+      "time": "2025-07-24T15:26:39.011825Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/.DS_Store_(1)",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/no_extension/.DS_Store_(1)",
+      "time": "2025-07-24T15:26:39.083647Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/pdf/sis.redsys.es_sis_pago3DSecure;jsessionid=0000J9m4rP6-GwPVc8LUYLstxlg_1bc077vpd_(1).pdf",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/pdf/sis.redsys.es_sis_pago3DSecure;jsessionid=0000J9m4rP6-GwPVc8LUYLstxlg_1bc077vpd_(1)_(1).pdf",
+      "time": "2025-07-24T15:26:39.127218Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/html/index_(1).html",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/html/index_(1)_(1).html",
+      "time": "2025-07-24T15:26:39.168676Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/scripts_(1).js",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/js/scripts_(1).js",
+      "time": "2025-07-24T15:26:39.210227Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/no_extension/.DS_Store_(1)",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/no_extension/.DS_Store_(1)_(1)",
+      "time": "2025-07-24T15:26:39.251826Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/jpeg/1683214198841_(1).jpeg",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/jpeg/1683214198841_(1)_(1).jpeg",
+      "time": "2025-07-24T15:26:39.294184Z"
+    },
+    {
+      "from": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/mov/Screen Recording 2025-07-23 at 12.16.32 PM_(1).mov",
+      "to": "/Users/tymurrozhkovskyi/_PRO/Rust/file_sorter/file_system/test/mov/Screen Recording 2025-07-23 at 12.16.32 PM_(1)_(1).mov",
+      "time": "2025-07-24T15:26:39.336556Z"
     }
   ]
 }
