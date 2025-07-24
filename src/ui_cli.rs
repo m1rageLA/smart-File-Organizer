@@ -1,3 +1,5 @@
+// src/ui_cli.rs
+
 use crate::{
     history::HistoryManager,
     logger::setup_logging,
@@ -13,10 +15,10 @@ use std::path::PathBuf;
 #[command(
     name = "Smart File Organizer",
     version,
-    about = "Автоматически сортирует файлы по подпапкам (CLI/GUI)"
+    about = "Automatically sorts files into subfolders (CLI/GUI)"
 )]
 pub struct CliArgs {
-    /// Запустить GUI вместо CLI
+    /// Launch GUI instead of CLI
     #[arg(long)]
     pub gui: bool,
 
@@ -26,7 +28,7 @@ pub struct CliArgs {
 
 #[derive(Subcommand, Debug)]
 pub enum Commands {
-    /// Организовать файлы
+    /// Organize files
     Organize {
         #[arg(short, long)] src: Option<PathBuf>,
         #[arg(short, long)] dst: Option<PathBuf>,
@@ -34,12 +36,12 @@ pub enum Commands {
         #[arg(long)] overwrite: bool,
         #[arg(long)] rules: Option<PathBuf>,
     },
-    /// Отменить последнее перемещение
+    /// Undo last move
     UndoLast {
         #[arg(long, default_value = ".smart_organizer/history.json")]
         history: PathBuf,
     },
-    /// Отменить всё
+    /// Undo all moves
     UndoAll {
         #[arg(long, default_value = ".smart_organizer/history.json")]
         history: PathBuf,
@@ -50,7 +52,7 @@ pub fn run_cli() -> anyhow::Result<()> {
     let args = CliArgs::parse();
 
     if args.gui {
-        // GUI запускается в main.rs
+        // GUI is launched from main.rs
         return Ok(());
     }
 
@@ -62,13 +64,17 @@ pub fn run_cli() -> anyhow::Result<()> {
         rules: None,
     }) {
         Commands::Organize {
-            src, dst, dry_run, overwrite, rules,
+            src,
+            dst,
+            dry_run,
+            overwrite,
+            rules,
         } => {
             let src = src.unwrap_or_else(select_folder_interactive);
             let dst = dst.unwrap_or_else(|| src.clone());
 
             let history_path = PathBuf::from(".smart_organizer/history.json");
-            let log_path     = PathBuf::from(".smart_organizer/organizer.log");
+            let log_path = PathBuf::from(".smart_organizer/organizer.log");
 
             std::fs::create_dir_all(".smart_organizer")?;
             setup_logging(log_path)?;
@@ -82,62 +88,76 @@ pub fn run_cli() -> anyhow::Result<()> {
 
             info!("Source:      {:?}", src);
             info!("Destination: {:?}", dst);
-            info!("Dry‑run:     {dry_run}");
-            info!("Overwrite:   {overwrite}");
+            info!("Dry‑run:     {}", dry_run);
+            info!("Overwrite:   {}", overwrite);
 
-            let org = Organizer::new(
-                OrganizerConfig { src_dir: src, dst_dir: dst, dry_run, overwrite },
+            let organizer = Organizer::new(
+                OrganizerConfig {
+                    src_dir: src,
+                    dst_dir: dst,
+                    dry_run,
+                    overwrite,
+                },
                 rule_engine,
                 HistoryManager::new(history_path),
             );
 
-            org.organize()?;
+            organizer.organize()?;
         }
 
         Commands::UndoLast { history } => {
-            let org = dummy_organizer(history)?;
-            org.undo_last()?;
+            let organizer = dummy_organizer(history)?;
+            organizer.undo_last()?;
         }
 
         Commands::UndoAll { history } => {
-            let org = dummy_organizer(history)?;
-            org.undo_all()?;
+            let organizer = dummy_organizer(history)?;
+            organizer.undo_all()?;
         }
     }
+
     Ok(())
 }
 
-/* ------------------------------------------------------------------ */
-/*  !!! Важное изменение: теперь возвращаем конкретный тип с generics  */
-/* ------------------------------------------------------------------ */
-fn dummy_organizer(history: PathBuf)
-    -> anyhow::Result<Organizer<Box<dyn RuleEngine>>>   // ← исправлено
-{
+/// Returns an Organizer with default settings for undo commands
+fn dummy_organizer(
+    history: PathBuf,
+) -> anyhow::Result<Organizer<Box<dyn RuleEngine>>> {
     let src = std::env::current_dir()?;
     let dst = src.clone();
 
     Ok(Organizer::new(
-        OrganizerConfig { src_dir: src, dst_dir: dst, dry_run: false, overwrite: false },
+        OrganizerConfig {
+            src_dir: src,
+            dst_dir: dst,
+            dry_run: false,
+            overwrite: false,
+        },
         Box::new(ExtensionRuleEngine) as Box<dyn RuleEngine>,
         HistoryManager::new(history),
     ))
 }
 
-/* Меню выбора папки */
+/// Simple interactive folder selection menu
 fn select_folder_interactive() -> PathBuf {
-    let theme   = ColorfulTheme::default();
+    let theme = ColorfulTheme::default();
     let current = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
     let mut dirs = vec![current.clone()];
 
-    if let Ok(read) = std::fs::read_dir(&current) {
-        for e in read.flatten() {
-            if e.path().is_dir() { dirs.push(e.path()); }
+    if let Ok(read_dir) = std::fs::read_dir(&current) {
+        for entry in read_dir.flatten() {
+            if entry.path().is_dir() {
+                dirs.push(entry.path());
+            }
         }
     }
 
-    let items: Vec<String> = dirs.iter().map(|p| p.to_string_lossy().to_string()).collect();
+    let items: Vec<String> = dirs
+        .iter()
+        .map(|p| p.to_string_lossy().to_string())
+        .collect();
     let selection = Select::with_theme(&theme)
-        .with_prompt("Выберите папку для организации")
+        .with_prompt("Select a folder to organize")
         .items(&items)
         .default(0)
         .interact()

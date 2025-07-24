@@ -1,11 +1,13 @@
+// src/ui_gui.rs
+
 use crate::{
     history::HistoryManager,
     organizer::{Organizer, OrganizerConfig},
     rules::{ExtensionRuleEngine, RuleEngine},
 };
 use crossbeam_channel::{bounded, Receiver};
-use egui::{Context, RichText};
 use eframe::{App, Frame};
+use egui::{Context, RichText};
 use log::{error, info};
 use parking_lot::Mutex;
 use rfd::FileDialog;
@@ -60,32 +62,38 @@ impl App for GuiApp {
             ui.heading("Smart File Organizer (Rust + egui)");
 
             ui.horizontal(|ui| {
-                if ui.button("Выбрать источник…").clicked() {
-                    if let Some(p) = FileDialog::new().pick_folder() {
-                        self.src = Some(p);
+                if ui.button("Select source…").clicked() {
+                    if let Some(path) = FileDialog::new().pick_folder() {
+                        self.src = Some(path);
                     }
                 }
-                let src_label = self.src.as_ref().map_or("—".to_string(), |p| p.to_string_lossy().to_string());
-                ui.label(&src_label);
+                let src_label = self
+                    .src
+                    .as_ref()
+                    .map_or("—".to_string(), |p| p.to_string_lossy().to_string());
+                ui.label(src_label);
             });
 
             ui.horizontal(|ui| {
-                if ui.button("Выбрать назначение…").clicked() {
-                    if let Some(p) = FileDialog::new().pick_folder() {
-                        self.dst = Some(p);
+                if ui.button("Select destination…").clicked() {
+                    if let Some(path) = FileDialog::new().pick_folder() {
+                        self.dst = Some(path);
                     }
                 }
-                let dst_label = self.dst.as_ref().map_or("—".to_string(), |p| p.to_string_lossy().to_string());
-                ui.label(&dst_label);
+                let dst_label = self
+                    .dst
+                    .as_ref()
+                    .map_or("—".to_string(), |p| p.to_string_lossy().to_string());
+                ui.label(dst_label);
             });
 
-            ui.checkbox(&mut self.dry_run, "Сухой прогон (dry-run)");
-            ui.checkbox(&mut self.overwrite, "Перезаписывать конфликтующие файлы");
+            ui.checkbox(&mut self.dry_run, "Dry-run mode");
+            ui.checkbox(&mut self.overwrite, "Overwrite conflicting files");
 
             ui.separator();
 
             if !self.running {
-                if ui.button("Старт").clicked() {
+                if ui.button("Start").clicked() {
                     if let Some(src) = self.src.clone() {
                         let dst = self.dst.clone().unwrap_or_else(|| src.clone());
                         let dry_run = self.dry_run;
@@ -104,8 +112,6 @@ impl App for GuiApp {
                             let history_path = PathBuf::from(".smart_organizer/history.json");
                             std::fs::create_dir_all(".smart_organizer").ok();
 
-                            let rule_engine = ExtensionRuleEngine;
-
                             let organizer = Organizer::new(
                                 OrganizerConfig {
                                     src_dir: src,
@@ -113,7 +119,7 @@ impl App for GuiApp {
                                     dry_run,
                                     overwrite,
                                 },
-                                rule_engine,
+                                ExtensionRuleEngine,
                                 HistoryManager::new(history_path),
                             );
 
@@ -127,13 +133,11 @@ impl App for GuiApp {
                         });
                     }
                 }
-            } else {
-                if ui.button("Отмена").clicked() {
-                    self.progress.store(false, Ordering::Relaxed);
-                }
+            } else if ui.button("Cancel").clicked() {
+                self.progress.store(false, Ordering::Relaxed);
             }
 
-            if let Some(ref rx) = self.receiver {
+            if let Some(rx) = &self.receiver {
                 if rx.try_recv().is_ok() {
                     self.running = false;
                     self.receiver = None;
@@ -141,15 +145,14 @@ impl App for GuiApp {
             }
 
             if self.running && self.progress.load(Ordering::Relaxed) {
-                ui.label(RichText::new("Работаю…").italics());
-                // Чтобы UI обновлялся
+                ui.label(RichText::new("Working…").italics());
                 ctx.request_repaint_after(Duration::from_millis(200));
-            } else if self.running && !self.progress.load(Ordering::Relaxed) {
-                ui.label(RichText::new("Готово").strong());
+            } else if self.running {
+                ui.label(RichText::new("Done").strong());
             }
 
             if let Some(err) = self.last_error.lock().clone() {
-                ui.colored_label(egui::Color32::RED, format!("Последняя ошибка: {err}"));
+                ui.colored_label(egui::Color32::RED, format!("Last error: {}", err));
             }
         });
     }
